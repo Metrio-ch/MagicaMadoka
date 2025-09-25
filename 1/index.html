@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueSakura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="music-container">
+    <div class="background-image"></div>
+    
+    <div class="content">
+      <div class="cd-container">
+        <div class="cd-image" id="cd-image"></div>
+      </div>
+      
+      <div class="controls">
+        <button id="play-pause-btn">Play</button>
+      </div>
+
+      <!-- 音频播放器 -->
+      <audio id="audio" src="V.mp3" preload="auto"></audio>
+
+      <!-- 播放进度条 -->
+      <div class="progress-container">
+        <span id="current-time">0:00</span> <!-- 当前时间 -->
+        <input type="range" id="progress-bar" value="0" min="0" step="1">
+        <span id="total-time">0:00</span> <!-- 总时长 -->
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

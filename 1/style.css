@@ -1,0 +1,91 @@
+/* 整体容器设置 */
+.music-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('background-image.jpg');
+  background-size: cover;
+  filter: blur(10px); /* 背景虚化 */
+  z-index: -1;
+}
+
+/* 内容区域布局 */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cd-container {
+  margin-bottom: 30px;
+}
+
+.cd-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-image: url('cd-image-1.png');
+  background-size: cover;
+  animation: rotate-cd 15s linear infinite; /* CD 旋转动画 */
+  animation-play-state: paused;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+}
+
+#progress-bar {
+  width: 100%;
+  margin: 0 10px;
+}
+
+#current-time, #total-time {
+  font-size: 14px;
+  color: #333;
+}
+
+
+/* CD旋转动画 */
+@keyframes rotate-cd {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
