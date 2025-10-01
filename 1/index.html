@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueSakura</title>
+  <title>幻夜·终章</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,24 +10,49 @@
     <div class="background-image"></div>
     
     <div class="content">
-      <div class="cd-container">
-        <div class="cd-image" id="cd-image"></div>
+      <!-- 左侧CD区域 -->
+      <div class="left-panel">
+        <div class="cd-container">
+          <div class="cd-image" id="cd-image"></div>
+        </div>
       </div>
       
-      <div class="controls">
-        <button id="play-pause-btn">Play</button>
-      </div>
+      <!-- 右侧控制区域 -->
+      <div class="right-panel">
+        <!-- 曲目列表 -->
+        <div class="playlist">
+          <h3>曲目列表</h3>
+          <ul id="song-list">
+            <li data-src="song1.mp3" class="song-item active">In horae punctum stetit</li>
+            <li data-src="song2.mp3" class="song-item">輪廻の檻</li>
+            <li data-src="song3.mp3" class="song-item">輪廻の檻-Instrumental</li>
+            <li data-src="song4.mp3" class="song-item">Sis Puella Magica (Arr.)</li>
+          </ul>
+        </div>
+        
+        <!-- 歌词显示区域 -->
+        <div class="lyrics-container">
+          <h3>歌词</h3>
+          <div id="lyrics-display">
+            <p>请选择歌曲播放</p>
+          </div>
+        </div>
+        
+        <!-- 播放控制 -->
+        <div class="controls">
+          <button id="play-pause-btn">Play</button>
+        </div>
 
+        <!-- 播放进度条 -->
+        <div class="progress-container">
+          <span id="current-time">0:00</span>
+          <input type="range" id="progress-bar" value="0" min="0" step="1">
+          <span id="total-time">0:00</span>
+        </div>
+      </div>
+      
       <!-- 音频播放器 -->
-      <audio id="audio" src="V.mp3" preload="auto"></audio>
-
-      <!-- 播放进度条 -->
-      <div class="progress-container">
-        <span id="current-time">0:00</span> <!-- 当前时间 -->
-        <input type="range" id="progress-bar" value="0" min="0" step="1">
-        <span id="total-time">0:00</span> <!-- 总时长 -->
-      </div>
-      
+      <audio id="audio" preload="auto"></audio>
     </div>
   </div>
 

@@ -23,10 +23,15 @@
   position: relative;
   z-index: 1;
   display: flex;
-  flex-direction: column;
+  height: 100%;
+}
+
+/* 左侧CD区域 */
+.left-panel {
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .cd-container {
@@ -34,8 +39,8 @@
 }
 
 .cd-image {
-  width: 320px;
-  height: 320px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   background-image: url('cd-image-1.png');
   background-size: cover;
@@ -43,10 +48,71 @@
   animation-play-state: paused;
 }
 
+/* 右侧控制区域 */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px 0 0 10px;
+  margin: 20px 0;
+}
+
+/* 曲目列表 */
+.playlist {
+  margin-bottom: 20px;
+}
+
+.playlist h3, .lyrics-container h3 {
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+#song-list {
+  list-style: none;
+  padding: 0;
+}
+
+.song-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.song-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.song-item.active {
+  background-color: rgba(51, 51, 51, 0.2);
+  font-weight: bold;
+}
+
+/* 歌词显示区域 */
+.lyrics-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  min-height: 200px;
+}
+
+#lyrics-display {
+  line-height: 1.6;
+}
+
 .controls {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 button {
@@ -55,6 +121,7 @@ button {
   background-color: #333;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -65,20 +132,19 @@ button:hover {
 .progress-container {
   display: flex;
   align-items: center;
-  width: 80%;
-  margin-top: 20px;
+  width: 100%;
 }
 
 #progress-bar {
-  width: 100%;
+  flex: 1;
   margin: 0 10px;
 }
 
 #current-time, #total-time {
   font-size: 14px;
   color: #333;
+  min-width: 40px;
 }
-
 
 /* CD旋转动画 */
 @keyframes rotate-cd {
@@ -87,5 +153,22 @@ button:hover {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .right-panel {
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  .cd-image {
+    width: 200px;
+    height: 200px;
   }
 }
