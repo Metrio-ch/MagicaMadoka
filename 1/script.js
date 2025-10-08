@@ -50,7 +50,7 @@ function loadSong(index) {
   
   // 加载歌词
   loadLyrics(songs[index].lyricsFile);
-
+  
   // 更新歌曲列表高亮
   songItems.forEach((item, i) => {
     if (i === index) {
@@ -66,7 +66,7 @@ function loadSong(index) {
   }
 }
 
-// 加载歌词
+// 从txt文件加载歌词
 function loadLyrics(lyricsFile) {
   lyricsDisplay.innerHTML = '<p>加载歌词中...</p>';
   
@@ -81,6 +81,11 @@ function loadLyrics(lyricsFile) {
       // 将歌词文本转换为HTML格式
       const formattedLyrics = formatLyrics(lyricsText);
       lyricsDisplay.innerHTML = formattedLyrics;
+      
+      // 确保歌词区域可以滚动
+      setTimeout(() => {
+        ensureLyricsScrollable();
+      }, 100);
     })
     .catch(error => {
       console.error('加载歌词时出错:', error);
@@ -88,6 +93,25 @@ function loadLyrics(lyricsFile) {
     });
 }
 
+// 确保歌词区域可以滚动
+function ensureLyricsScrollable() {
+  const lyricsContent = document.querySelector('.lyrics-content');
+  if (lyricsContent) {
+    // 强制启用滚动
+    lyricsContent.style.overflowY = 'auto';
+    lyricsContent.style.webkitOverflowScrolling = 'touch';
+    
+    // 如果内容高度小于容器高度，添加一些空行
+    if (lyricsContent.scrollHeight <= lyricsContent.clientHeight) {
+      const extraLines = 10 - lyricsDisplay.children.length;
+      if (extraLines > 0) {
+        for (let i = 0; i < extraLines; i++) {
+          lyricsDisplay.innerHTML += '<p>&nbsp;</p>';
+        }
+      }
+    }
+  }
+}
 
 // 格式化歌词文本
 function formatLyrics(lyricsText) {
@@ -150,3 +174,6 @@ function formatTime(seconds) {
 
 // 初始化播放器
 initPlayer();
+
+// 窗口大小改变时重新确保歌词可滚动
+window.addEventListener('resize', ensureLyricsScrollable);

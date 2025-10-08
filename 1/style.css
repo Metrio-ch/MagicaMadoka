@@ -3,7 +3,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  height: 100dvh; /* 动态视口高度，适配移动端 */
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   height: 100%;
   background-image: url('background-image.jpg');
   background-size: cover;
-  filter: blur(10px); /* 背景虚化 */
+  filter: blur(10px);
   z-index: -1;
 }
 
@@ -53,12 +53,12 @@
 }
 
 .cd-image {
-  width: 500px;
-  height: 500px;
+  width: 580px;
+  height: 580px;
   border-radius: 50%;
   background-image: url('cd-image-1.png');
   background-size: cover;
-  animation: rotate-cd 15s linear infinite; /* CD 旋转动画 */
+  animation: rotate-cd 15s linear infinite;
   animation-play-state: paused;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
@@ -83,7 +83,7 @@
   flex-shrink: 0;
 }
 
-.playlist h3, .lyrics-container h3 {
+.playlist h3, .lyrics-section h3 {
   margin-bottom: 10px;
   color: #333;
   border-bottom: 1px solid #ddd;
@@ -95,7 +95,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 170px;
+  max-height: 120px;
   overflow-y: auto;
 }
 
@@ -117,46 +117,51 @@
   font-weight: bold;
 }
 
-/* 歌词显示区域 */
+/* 歌词显示区域 - 重新设计 */
+.lyrics-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
 .lyrics-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  margin-bottom: 15px;
-  min-height: auto;
-}
-
-.lyrics-scroll {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
+  overflow: hidden;
+  position: relative;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
-  line-height: 1.8;
-  text-align: center;
-  -webkit-overflow-scrolling: touch; /* 移动端平滑滚动 */
-  min-height: auto;
 }
 
-#lyrics-display {
-  min-height: min-content; /* 确保内容高度足够时可以滚动 */
+.lyrics-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  line-height: 1.8;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+  /* 确保内容可以滚动 */
+  min-height: 0;
 }
 
 #lyrics-display p {
-  margin: 8px 0;
+  margin: 10px 0;
   transition: all 0.3s;
-  font-size: 14px;
+  font-size: 15px;
+  padding: 5px 0;
 }
 
 #lyrics-display p.active {
   color: #e74c3c;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 /* 播放控制区域 */
-.controls-container {
+.controls-section {
   flex-shrink: 0;
   padding-top: 10px;
   border-top: 1px solid #ddd;
@@ -254,11 +259,12 @@ button:hover {
   .left-panel {
     min-height: 30vh;
     padding: 10px;
+    flex-shrink: 0;
   }
   
   .cd-image {
-    width: 180px;
-    height: 180px;
+    width: 240px;
+    height: 240px;
   }
   
   .right-panel {
@@ -269,26 +275,42 @@ button:hover {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    padding: 10px;
   }
   
   .playlist {
     flex-shrink: 0;
+    margin-bottom: 10px;
+  }
+  
+  .lyrics-section {
+    flex: 1;
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
   
   .lyrics-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    margin-bottom: 10px;
+    min-height: 0;
   }
   
-  .lyrics-scroll {
+  .lyrics-content {
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding: 10px;
+    min-height: 0;
   }
   
-  .controls-container {
+  .controls-section {
     flex-shrink: 0;
+    padding-top: 10px;
   }
   
   button {
@@ -298,6 +320,12 @@ button:hover {
   
   #song-list {
     max-height: 100px;
+  }
+  
+  /* 确保歌词区域有足够的空间 */
+  .lyrics-section h3 {
+    margin-bottom: 8px;
+    font-size: 15px;
   }
 }
 
@@ -309,7 +337,7 @@ button:hover {
   }
   
   .right-panel {
-    padding: 10px;
+    padding: 8px;
   }
   
   button {
@@ -321,12 +349,40 @@ button:hover {
     max-height: 80px;
   }
   
-  .lyrics-scroll {
+  .lyrics-content {
     padding: 8px;
   }
   
   #lyrics-display p {
-    font-size: 13px;
-    margin: 6px 0;
+    font-size: 14px;
+    margin: 8px 0;
+  }
+}
+
+/* 特别针对歌词滚动问题的修复 */
+.lyrics-scroll-fix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 确保在移动端歌词可以滚动 */
+@media (max-width: 768px) {
+  .lyrics-container {
+    position: relative;
+  }
+  
+  .lyrics-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
