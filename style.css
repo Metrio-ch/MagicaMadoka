@@ -305,8 +305,8 @@ button:hover {
 /* 超小屏幕优化 */
 @media (max-width: 480px) {
   .cd-image {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
   
   .right-panel {
@@ -327,6 +327,7 @@ button:hover {
   }
   
   #lyrics-display p {
+    max-height: 320px;
     font-size: 13px;
     margin: 6px 0;
   }
