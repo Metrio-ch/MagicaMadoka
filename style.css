@@ -258,8 +258,8 @@ button:hover {
   }
   
   .cd-image {
-    width: 180px;
-    height: 180px;
+    width: 240px;
+    height: 240px;
   }
   
   .right-panel {
@@ -279,6 +279,7 @@ button:hover {
   .lyrics-container {
     flex: 1;
     overflow: hidden;
+    overflow-y: auto;
     margin-bottom: 10px;
   }
   
@@ -287,6 +288,7 @@ button:hover {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+
   
   .controls-container {
     flex-shrink: 0;
@@ -305,8 +307,8 @@ button:hover {
 /* 超小屏幕优化 */
 @media (max-width: 480px) {
   .cd-image {
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
   }
   
   .right-panel {
@@ -327,7 +329,7 @@ button:hover {
   }
   
   #lyrics-display p {
-    max-height: 320px;
+    max-height: 240px;
     font-size: 13px;
     margin: 6px 0;
   }
