@@ -1,7 +1,8 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>幻夜·终章</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -31,23 +32,28 @@
         </div>
         
         <!-- 歌词显示区域 -->
-        <div class="lyrics-container">
+        <div class="lyrics-section">
           <h3>歌词</h3>
-          <div id="lyrics-display">
-            <p>请选择歌曲播放</p>
+          <div class="lyrics-container">
+            <div id="lyrics-display" class="lyrics-content">
+              <p>请选择歌曲播放</p>
+            </div>
           </div>
         </div>
         
-        <!-- 播放控制 -->
-        <div class="controls">
-          <button id="play-pause-btn">Play</button>
-        </div>
+        <!-- 播放控制区域 -->
+        <div class="controls-section">
+          <!-- 播放控制 -->
+          <div class="controls">
+            <button id="play-pause-btn">Play</button>
+          </div>
 
-        <!-- 播放进度条 -->
-        <div class="progress-container">
-          <span id="current-time">0:00</span>
-          <input type="range" id="progress-bar" value="0" min="0" step="1">
-          <span id="total-time">0:00</span>
+          <!-- 播放进度条 -->
+          <div class="progress-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" min="0" step="1">
+            <span id="total-time">0:00</span>
+          </div>
         </div>
       </div>
       
