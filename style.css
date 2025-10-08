@@ -270,6 +270,7 @@ button:hover {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
   
   .playlist {
@@ -281,6 +282,7 @@ button:hover {
     overflow: hidden;
     overflow-y: auto;
     margin-bottom: 10px;
+    flex-shrink: 0;
   }
   
   .lyrics-scroll {
