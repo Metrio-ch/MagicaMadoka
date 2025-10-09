@@ -298,6 +298,7 @@ button:hover {
     flex-direction: column;
     overflow: hidden;
     min-height: 0;
+    margin: 0 10px 10px;
   }
   
   .lyrics-content {
@@ -327,6 +328,11 @@ button:hover {
     margin-bottom: 8px;
     font-size: 15px;
   }
+  
+  #lyrics-display p {
+    font-size: 14px;
+    margin: 8px 0;
+  }
 }
 
 /* 超小屏幕优化 */
@@ -353,10 +359,6 @@ button:hover {
     padding: 8px;
   }
   
-  #lyrics-display p {
-    font-size: 14px;
-    margin: 8px 0;
-  }
 }
 
 /* 特别针对歌词滚动问题的修复 */
